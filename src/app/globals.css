@@ -118,10 +118,165 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "helvetica-neue-lt-pro", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    display: block;
   }
 }
 
 /* Hide Next.js error overlay portal */
 nextjs-portal {
   display: none !important;
+}
+
+.hiroto-meta-label {
+  color: rgb(11 11 10 / 0.45);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hiroto-meta-label-dark {
+  color: rgb(243 237 226 / 0.45);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hiroto-home__noise,
+.hiroto-home__halo,
+.hiroto-home__beam,
+.hiroto-home__signal {
+  pointer-events: none;
+  position: absolute;
+}
+
+.hiroto-home__noise {
+  inset: 0;
+  opacity: 0.18;
+  background-image: radial-gradient(circle at 20% 20%, rgb(255 255 255 / 0.08), transparent 24%),
+    radial-gradient(circle at 78% 24%, rgb(255 255 255 / 0.06), transparent 18%),
+    radial-gradient(circle at 50% 80%, rgb(255 255 255 / 0.04), transparent 22%);
+}
+
+.hiroto-home__halo {
+  inset: auto 50% 18%;
+  width: min(72vw, 860px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgb(202 168 108 / 0.24), transparent 58%);
+  filter: blur(20px);
+}
+
+.hiroto-home__beam {
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.06) 0%,
+    transparent 26%,
+    transparent 72%,
+    rgb(255 255 255 / 0.04) 100%
+  );
+}
+
+.hiroto-home__signal {
+  left: 50%;
+  top: 50%;
+  width: min(62vw, 560px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.hiroto-home__signal-core,
+.hiroto-home__signal-ring {
+  border-radius: 999px;
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hiroto-home__signal-core {
+  width: 18%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(255 244 223 / 0.92), rgb(166 128 72 / 0.54) 58%, transparent 72%);
+  box-shadow: 0 0 80px rgb(217 174 94 / 0.24);
+  animation: hirotoPulse 4.6s ease-in-out infinite;
+}
+
+.hiroto-home__signal-ring {
+  border: 1px solid rgb(243 237 226 / 0.16);
+  animation: hirotoFloat 8s ease-in-out infinite;
+}
+
+.hiroto-home__signal-ring--one {
+  width: 56%;
+  aspect-ratio: 1;
+}
+
+.hiroto-home__signal-ring--two {
+  width: 82%;
+  aspect-ratio: 1;
+  animation-delay: -3s;
+}
+
+.hiroto-marquee {
+  width: max-content;
+  animation: hirotoMarquee 36s linear infinite;
+}
+
+.hiroto-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes hirotoPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.98);
+    opacity: 0.82;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes hirotoFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    opacity: 0.42;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(8deg) scale(1.04);
+    opacity: 0.78;
+  }
+}
+
+@keyframes hirotoMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .hiroto-marquee {
+    animation-duration: 28s;
+  }
 }
