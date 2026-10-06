@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
+import { PrismaHeroBackground } from "@/components/ui/prisma-hero";
 
 type Locale = "en" | "ja";
 
@@ -35,7 +36,7 @@ const aboutCopy = {
     roleLabel: "Role",
     roleValue: "Creative Developer",
     contactLabel: "Contact",
-    emailValue: "hello@hirotos.com",
+    emailValue: "sauravedu.official@gmail.com",
     linkedInValue: "LinkedIn",
   },
   ja: {
@@ -47,7 +48,7 @@ const aboutCopy = {
     roleLabel: "職業",
     roleValue: "クリエイティブデベロッパー",
     contactLabel: "コンタクト",
-    emailValue: "hello@hirotos.com",
+    emailValue: "sauravedu.official@gmail.com",
     linkedInValue: "LinkedIn",
   },
 };
@@ -192,7 +193,7 @@ function SiteNav({ inverted = false }: { inverted?: boolean }) {
     <nav
       aria-label="Primary"
       className={`fixed right-[clamp(14px,2.6vw,44px)] top-[clamp(18px,2.8vw,40px)] z-50 flex items-end gap-2 text-right uppercase tracking-[0.18em] ${
-        inverted ? "text-[#f3ede2]/55" : "text-[#0b0b0a]/45"
+        inverted ? "text-[#1a1a1a]/60" : "text-[#0b0b0a]/45"
       }`}
     >
       <div className="flex flex-col items-end gap-2 text-[11px] font-medium sm:text-[12px]">
@@ -207,7 +208,7 @@ function SiteNav({ inverted = false }: { inverted?: boolean }) {
               className={`transition duration-200 hover:-translate-x-0.5 hover:opacity-100 ${
                 active
                   ? inverted
-                    ? "text-[#f3ede2]"
+                    ? "text-[#1a1a1a]"
                     : "text-[#0b0b0a]"
                   : ""
               }`}
@@ -301,7 +302,7 @@ function DetailList({
           <dt className={dark ? "hiroto-meta-label-dark" : "hiroto-meta-label"}>
             {item.label}
           </dt>
-          <dd className={`mt-2 text-[12px] uppercase tracking-[0.08em] sm:text-[13px] ${dark ? "text-[#f3ede2]" : "text-[#0b0b0a]"}`}>
+          <dd className={`mt-2 text-[12px] font-medium uppercase tracking-[0.08em] sm:text-[13px] ${dark ? "text-[#1a1a1a]/80" : "text-[#0b0b0a]"}`}>
             {item.value}
           </dd>
         </div>
@@ -315,15 +316,11 @@ export function HomePage() {
     <>
       <SiteNav inverted />
       <PageReveal>
-        <section className="hiroto-home relative min-h-screen overflow-hidden bg-[#050505] text-[#f3ede2]">
+        <section className="hiroto-home relative min-h-screen overflow-hidden bg-[#f3f1ee] text-[#d8d0c4]">
           <div className="hiroto-home__noise" />
           <div className="hiroto-home__halo" />
           <div className="hiroto-home__beam" />
-          <div className="hiroto-home__signal">
-            <div className="hiroto-home__signal-core" />
-            <div className="hiroto-home__signal-ring hiroto-home__signal-ring--one" />
-            <div className="hiroto-home__signal-ring hiroto-home__signal-ring--two" />
-          </div>
+          <PrismaHeroBackground />
 
           <div className="relative z-10 grid min-h-screen grid-rows-[auto_1fr_auto] gap-10 px-[clamp(18px,5vw,54px)] py-[clamp(18px,4vw,40px)]">
             <div className="max-w-md self-start pt-[clamp(84px,12vw,144px)]">
@@ -331,7 +328,7 @@ export function HomePage() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.55 }}
-                className="mb-3 text-[12px] font-medium uppercase tracking-[0.2em] text-[#f3ede2]/58"
+                className="mb-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-[#1a1a1a]/70"
               >
                 Creative Developer
               </motion.p>
@@ -339,7 +336,7 @@ export function HomePage() {
                 initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.22, duration: 0.7 }}
-                className="max-w-md text-[clamp(38px,7vw,92px)] font-medium uppercase leading-[0.92] tracking-[0.05em]"
+                className="max-w-md text-[clamp(38px,7vw,92px)] font-semibold uppercase leading-[0.92] tracking-[0.05em] text-[#111111]"
               >
                 Hiroto Sato
               </motion.h1>
@@ -351,9 +348,7 @@ export function HomePage() {
               transition={{ delay: 0.35, duration: 0.8 }}
               className="pointer-events-none flex items-center justify-center"
             >
-              <div className="rounded-full border border-white/15 px-5 py-3 text-center text-[11px] uppercase tracking-[0.35em] text-[#f3ede2]/72 backdrop-blur-sm sm:px-8 sm:py-4 sm:text-[13px]">
-                Signal Pole / Portfolio 2026
-              </div>
+              <div className="h-[1px] w-full max-w-[480px] bg-[#1a1a1a]/20" />
             </motion.div>
 
             <motion.div
@@ -422,14 +417,14 @@ export function AboutPage() {
                     <dt className="hiroto-meta-label">{copy.contactLabel}</dt>
                     <dd className="mt-2 grid gap-2 text-[13px] text-[#0b0b0a]/82">
                       <a
-                        href="mailto:hello@hirotos.com"
+                        href="mailto:sauravedu.official@gmail.com"
                         className="inline-flex items-center gap-2 transition hover:text-[#0b0b0a]"
                       >
                         <span>{copy.emailValue}</span>
                         <ExternalArrow className="size-4 fill-current" />
                       </a>
                       <a
-                        href="https://www.linkedin.com/in/hiroto-sato-2414b23b7"
+                        href="https://www.linkedin.com/in/sauravkumar81"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 transition hover:text-[#0b0b0a]"
@@ -451,9 +446,9 @@ export function AboutPage() {
 
 export function ContactPage() {
   const links = [
-    { href: "mailto:hello@hirotos.com", label: "hello@hirotos.com" },
+    { href: "mailto:sauravedu.official@gmail.com", label: "sauravedu.official@gmail.com" },
     {
-      href: "https://www.linkedin.com/in/hiroto-sato-2414b23b7",
+      href: "https://www.linkedin.com/in/sauravkumar81",
       label: "LinkedIn",
     },
   ];
